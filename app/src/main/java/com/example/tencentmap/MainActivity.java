@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TagFlowLayout tag_flow;
     private List<String> list=new ArrayList<String>();
     private TextView textView;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         tag_flow = (TagFlowLayout) findViewById(R.id.tag_flow);
-
+        tv = (TextView) findViewById(R.id.tv);
         list.add("hahahaha");
         list.add("hahahaha1");
         list.add("hahahaha2");
@@ -53,15 +54,15 @@ public class MainActivity extends AppCompatActivity {
         tag_flow.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
             @Override
             public void onSelected(Set<Integer> selectPosSet) {
-
-            }
+                            }
         });
         tag_flow.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
              //
-                //  textView.setBackground(getResources().getDrawable(R.drawable.text_color_size));
+                tv.setText(list.get(position));
+
                 return true;
             }
         });
